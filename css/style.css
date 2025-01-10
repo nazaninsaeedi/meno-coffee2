@@ -1,0 +1,474 @@
+.flex,
+.flex__col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.intro {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    font-size: var(--fontSizeIntro);
+    transform-origin: top;
+}
+
+.intro__red {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color: #ccdada;
+    border-radius: 50px 8px;
+    font-family: var(--font1);
+    font-size: 30vw;
+    font-weight: 900;
+    line-height: 30vh;
+    overflow: hidden;
+    color: transparent;
+    text-align: center;
+    -webkit-text-stroke: 1px #222;
+    transform: scaleY(0);
+    transform-origin: bottom;
+}
+
+.intro__red div {
+    transform: scaleX(0.5) scaleY(1.5);
+    letter-spacing: -1vw;
+}
+
+.down-to-up {
+  opacity: 0; /* شروع با حالت محو */
+  transform: translateY(100px); /* شروع از پایین */
+  transition: opacity 1.5s ease, transform 5.5 ease; /* انیمیشن */
+}
+.down-to-up.visible {
+  opacity: 1; /* حالت نمایان */
+  transform: translateY(0); /* به موقعیت اصلی برمی‌گردد */
+}
+ 
+ 
+.left-to-right {
+  opacity: 0; /* شروع با حالت محو */
+  transform: translatex(-100px); /* شروع از پایین */
+  transition: opacity 1.5s ease, transform 3.5s ease; /* انیمیشن */
+}
+.left-to-right.visible {
+  opacity: 1; /* حالت نمایان */
+  transform: translatex(0); /* به موقعیت اصلی برمی‌گردد */
+}
+.fade-in-out__popup {
+  opacity: 0; /* شروع با حالت محو */
+  transform: scale(0.5);
+  transition: opacity 5.5s ease, transform 5.5s ease;
+}
+.fade-in-out__popup.visible {
+  opacity: 1; /* حالت نمایان */
+}
+
+:root {
+  --input-text-color: #fff;
+  --bg-color: linear-gradient(137deg, #38383de0, #000000ed);
+  --focus-input-bg-color: transparent;
+  --text-color: #ffffff;
+  --active-color: #F8D01A;
+  --width-of-input: 200px;
+  --inline-padding-of-input: 1.2em;
+  --gap: 0.9rem;
+}
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%); /* شروع از پایین */
+    opacity: 0; /* شفافیت اولیه */
+  }
+  to {
+    transform: translateY(0); /* به موقعیت اصلی */
+    opacity: 1; /* شفافیت نهایی */
+  }
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #fff;
+    direction: rtl;
+    text-align: center;
+}
+p{
+  margin: 0;
+}
+h5{
+  margin: 5px 0 0 0;
+}
+h3{
+  margin: 10px 0 10px 0;
+}
+h6{
+  margin-bottom: 0;
+}
+.container {
+    margin: auto;
+    overflow: hidden;
+}
+.header{
+ display: flex;
+ justify-content: space-around;
+}
+.header-btn{
+  background: var(--bg-color);
+  border: #000; 
+  width: 40px;
+  height: 50px;
+  padding: 4%;
+  border-radius: 10px;
+}
+.search-bar { 
+    justify-content: center;
+    margin: 20px 0;
+}
+.search-bar_text{
+  color: #877C74;
+  font-family: ui-rounded;
+  margin: 0 0 0px 20px;
+}
+.search-bar_span{
+  color: #403E3C;
+  position: relative;
+  top: 20px;
+  right: 45px;
+  font-family: ui-rounded;
+}
+/* From Uiverse.io by satyamchaudharydev */ 
+/* this is a recreation of twitter search in css */
+
+  /* form style */
+  .form {
+    font-size: 0.9rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    position: relative;
+    left: 1rem;
+    isolation: isolate;
+  }
+  /* a fancy bg for showing background and border when focus. */
+  .fancy-bg {
+    position: absolute;
+    width: 100%;
+    inset: 0;
+    background: var(--bg-color);
+    border-radius: 10px;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+  /* label styling */
+  label {
+    width: 100%;
+    padding: 0.8em;
+    height: 20px;
+    padding-inline: var(--inline-padding-of-input);
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  /* styling search-icon */
+  .search {
+    fill: var(--text-color);
+    left: var(--inline-padding-of-input);
+    right: 3rem;
+    position: absolute;
+  }
+  /* svg -- size */
+  svg {
+    width: 17px;
+    display: block;
+  }
+  /* styling of input */
+  .input {
+    color: var(--input-text-color);
+    width: 100%;
+    margin-inline: min(2em,calc(var(--inline-padding-of-input) + var(--gap)));
+    background: none;
+    border: none;
+    text-align: center;
+  }
+  
+  .input:focus {
+    outline: none;
+  }
+  
+  .input::placeholder {
+    color: var(--text-color)
+  }
+  /* input background change in focus */
+  .input:focus ~ .fancy-bg {
+    border: 1px solid var(--active-color);
+    background: var(--focus-input-bg-color);
+  }
+  /* search icon color change in focus */
+  .input:focus ~ .search {
+    fill: var(--active-color);
+  }
+  /* showing close button when typing */
+  .input:valid ~ .close-btn {
+    opacity: 1;
+    visibility: visible;
+  }
+  /* this is for the default background in input,when selecting autofill options -- you can remove this code if you do not want to override the browser style.  */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+    -webkit-transition-delay: 9999s;
+  }
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    animation: slideInUp 0.5s ease-in-out;
+}
+.tab {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #88888C;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 4rem;
+  
+}
+.tab.active {
+    background:var(--bg-color);
+}
+ 
+.food-list{
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  animation: slideInUp 0.5s ease-in-out;
+}
+.food-list.active{
+  display: block;
+  opacity: 1;
+}
+.main-box{
+  width: 90%;
+  margin: 0px auto;
+  height: 75px;
+  position: relative;
+  margin-bottom: 0.3rem;
+}
+.food-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-color);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.food-item__pic {
+  width: 70px;
+  height: 80px; 
+  margin-top: 3px;
+}
+
+.food-item__title{
+  text-align: right;
+  font-size: 18px;
+  color: white;
+  margin-top: -15px;
+}
+.food-item__btn{
+  background: #fff;
+  width: 27px;
+  height: 25px;
+  padding: 2%;
+  border-radius: 10px;
+}
+.popup-footer_button{
+  background-color: transparent;
+  color: #000;
+  border: transparent;
+  font-size: 100%;
+  position: relative;
+  bottom: -0.2rem;
+}
+.div-popup{
+  display: none;
+}
+.div-body{
+  padding: 0 1rem;
+}
+.popup-pic{
+  width: 17rem;
+  height: 15rem;
+}
+.popup-title{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.popup-text{
+  text-align: right;
+}
+.popup-btn {
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+.popup-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+.div-footer{
+  /*margin-top: 5rem;*/
+  top: 20%;
+  position: relative;
+}
+.popup-order{
+  background-color: #fff;
+  color: #000;
+  padding: 10px 50px;
+  font-weight: bolder;
+}
+.popup-price{
+  margin: 0;
+  left: 25px;
+  position: relative;
+}
+.closePopup{
+  background: var(--bg-color);
+  color: white;
+  border: transparent;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 120%;
+  position: relative;
+  right: 13rem;
+  top: 4rem;
+}
+ 
+.popup {
+  display: none;
+  position: fixed;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000;
+  width: 80%;
+  height: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+.popup.active {
+  display: block;
+}
+.popup-header, .popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.popup-body {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-self: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.999);
+  z-index: 999;
+}
+.overlay.active {
+  display: block;
+}
+.popup-body div .food-item__pic {
+display: none;
+}
+.popup-body .food-item__title{
+  display: none;
+}
+.popup-body .food-item__btn{
+  display: none;
+}
+.popup-body .div-popup{
+  display: block;
+}
+ 
+ 
+@media only screen and (min-width: 450px) {
+
+}
+@media only screen and (min-width: 430px) {
+  .closePopup{
+    right: 19rem;
+    height: 40px;
+    width: 40px;
+}
+.popup{
+  font-size: 155%;
+  width: 90%;
+}
+.popup-btn{
+  font-size: 27px;
+}
+.popup-pic{
+  width: 20rem;
+  height: 20rem;
+}
+.popup-text{
+  margin-top: 35px;
+}
+}
+@media only screen and (min-width: 390px) {
+ .popup{
+  font-size: 130%;
+ }
+ .popup-btn{
+  font-size: 21px;
+}
+.popup-pic{
+  width: 20rem;
+  height: 20rem;
+}
+.closePopup{
+  right: 15rem;
+  height: 40px;
+  width: 40px;
+}
+}
+
+.slick-slide img {
+  display: inline; 
+}
+
+
+

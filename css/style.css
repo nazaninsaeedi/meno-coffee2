@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'kalameh';
+  src: url('../fonts/TTF/Kalameh-Medium.ttf');
+}
+*{
+  font-family: 'kalameh';
+}
+body {
+    font-family:'kalameh';
+}
 .flex,
 .flex__col {
     display: flex;

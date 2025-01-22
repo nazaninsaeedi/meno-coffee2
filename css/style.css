@@ -7,6 +7,10 @@
 }
 body {
     font-family:'kalameh';
+    background-color: #fff;
+    color: #fff;
+    direction: rtl;
+    text-align: center;
 }
 .flex,
 .flex__col {
@@ -100,13 +104,7 @@ body {
     opacity: 1; /* شفافیت نهایی */
   }
 }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #fff;
-    direction: rtl;
-    text-align: center;
-}
+
 p{
   margin: 0;
 }
